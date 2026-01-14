@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.egg-info/
+.venv/
+venv/
+venv311/
+
+# Logs
+logs/
+*.log
+
+# Runtime / datasets / caches
+/data/captures/
+/data/captures/_cache/
+
+# Local upstream copies (not part of main repo)
+ai-game-secretary-upstream/
+upstream/
+
+# Windows/.NET build outputs
+windows_app/**/bin/
+windows_app/**/obj/
+
+# Misc
+.DS_Store
+Thumbs.db
+.env
+.env.*
