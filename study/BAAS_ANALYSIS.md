@@ -240,3 +240,57 @@ BAAS stores click positions for grid-based UIs (schedule rooms, shop items, etc.
 
 ### 4. Template Matching for Student Avatars
 BAAS uses cropped avatar templates to find specific students in schedule. We use Florence which is heavier. For known students, pre-cropped templates would be faster and more reliable.
+
+---
+
+## Current Adaptation Status (This Repo)
+
+### ✅ Already Adapted and Wired into Daily Pipeline
+
+Current default daily skill chain (code + profile config) is:
+
+1. lobby
+2. ap_overflow
+3. cafe
+4. schedule
+5. club
+6. momo_talk
+7. shop
+8. craft
+9. story_cleanup
+10. event_activity
+11. event_farming
+12. bounty
+13. arena
+14. joint_firing_drill
+15. total_assault
+16. mail
+17. daily_tasks
+18. pass_reward
+19. ap_planning
+20. hard_farming
+21. event_farming_2
+22. campaign_push
+
+This means BAAS daily core modules are adapted with both event-first routing and end-of-run fallback AP sinks.
+
+### ✅ Recent Stability Fixes Completed
+
+- Pass reward module integrated (`PassRewardSkill`)
+- Total assault module integrated (`TotalAssaultSkill`)
+- Event activity module integrated (`EventActivitySkill`) for event story/challenge/grid fallback handling
+- Story one-click cleanup integrated (`StoryCleanupSkill`)
+- Tactical exam / joint firing drill integrated (`JointFiringDrillSkill`)
+- AP planning + optional AP purchase policy integrated (`ApPlanningSkill`)
+- Campaign push fallback integrated (`CampaignPushSkill`)
+- Generic screen classification updated to avoid Mission misclassification for Pass/Total Assault
+- Common popup handler now dismisses low-confidence `通知` dialogs (cancel/confirm)
+- Server skill options and profile normalization updated so new skills and `ap_purchase_limit` are preserved
+
+### ⏳ Remaining Work (Operational Verification / Tuning)
+
+- Full live end-to-end run with tick+截图 validation (verify real completion, not only `done`)
+- AP planning strategy tuning for special event periods (2x/3x routing heuristics)
+- Campaign push long-run tuning for account-specific map/UI variance
+
+So: **BAAS feature integration is now wired into the pipeline path**, and the current focus is **live validation + strategy tuning**.
